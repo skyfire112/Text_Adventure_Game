@@ -8,8 +8,12 @@ var game = {
 		});
 
 		readlineThing.question("What is your name", function(answer){
-			console.log('Hi there' + answer + ", and welcome to the game!")
-			readlineThing.close();
+			console.log('Hi there ' + answer + ", and welcome to the game!")
+			readlineThing.question("Choose your class! (Mage, Warrior, Thief)\n", function(answer){
+				chooseClass(answer);
+				console.log(Player);
+				readlineThing.close();
+			})
 		})
 	},
 	restart: function() {
