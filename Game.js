@@ -18,16 +18,26 @@ function initialize() {
     readlineThing.question("What is your name? ", function(answer) {
             Name(answer);
             console.log('Hi there ' + answer + ", welcome to the game!")
-            readlineThing.question("Choose your class: (Mage, Warrior, Thief) ", function(answer) {
-                chooseClass(answer);
-                readlineThing.question("Choose your gender: Male, Female, genderless", function(answer) {
-                gender(answer);
-                console.log(Player)
-                readlineThing.close();
-            })
-        })
+            askClass();
     })
 }
+
+function askClass() {
+    readlineThing.question("Choose your class: (Mage, Warrior, Thief) ", function(answer) {
+        chooseClass(answer);
+        askGender();
+
+    })
+}
+
+function askGender() {
+    readlineThing.question("Choose your gender: (Male, Female, Genderless)", function(answer) {
+        gender(answer);
+        console.log(Player)
+        readlineThing.close();
+    })
+}
+
 
 var Player = {
     name: "Eric",
@@ -52,7 +62,7 @@ var Player = {
 }
 
 var finalBoss = {
-    name: "Alan",
+    name: "Boss",
     health: 100,
     skill: {
         attack: function() {
@@ -82,7 +92,7 @@ function chooseClass(answer) {
         console.log("Take this @#%!@#@!#!@!");
         finalBoss.health = finalBoss.health - 10;
     }
-    if (Player.class == "Mage") {
+     if (Player.class.toLowerCase() == "mage") {
         //Player.health = 10;
         Player.skill["2"] = function() {
             console.log("Eat fire");
@@ -96,7 +106,7 @@ function chooseClass(answer) {
                 Player.health = Player.health + 10;
             }
         }
-    } else if (Player.class == "Thief") {
+    } else if (Player.class.toLowerCase() == "thief") {
         //Player.health = 10;
         Player.skill["2"] = function() {
             console.log("Stabby stab stab");
@@ -106,7 +116,7 @@ function chooseClass(answer) {
             console.log("Eat my arrow");
             finalBoss.health = finalBoss.health - 15;
         }
-    } else if (Player.class == "Warrior") {
+    } else if (Player.class.toLowerCase() == "warrior") {
         //Player.health = 10;
         Player.skill["2"] = function() {
             console.log("Shanking intensifies");
@@ -117,7 +127,7 @@ function chooseClass(answer) {
         Player.skill["3"] = function() {
             console.log("This skill is a placeholder. It does nothing.");
         }
-    } else if (Player.class == "Immortal") {
+    } else if (Player.class.toLowerCase() == "hacker") {
         //Player.health = 10;
         Player.skill["2"] = function() {
             console.log("Earthquake");
@@ -130,9 +140,8 @@ function chooseClass(answer) {
             finalBoss.health = finalBoss.health - 10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
         }
     }else {
-        readlineThing.question("Please enter a valid class: ", function(answer) {
-            chooseClass(answer);
-        })
+       console.log("Please enter a valid class.");
+            askClass();
     }
 }
 
