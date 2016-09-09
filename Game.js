@@ -14,6 +14,25 @@ var game = {
     }
 }
 
+var beginLoad;
+function beginText() {
+ beginLoad = setTimeout(function() {
+   console.log(" ");
+   setTimeout(function() {
+     console.log("   ---=====---");
+     setTimeout(function() {
+       console.log("  Game Starting");
+       setTimeout(function() {
+         console.log("   ---=====---")
+         setTimeout(function() {
+           console.log(" ")
+         }, 1000)
+       }, 1000)
+     }, 1000)
+   }, 1000)
+ }, 1000)
+}
+
 function initialize() {
     readlineThing.question("What is your name? ", function(answer) {
             Name(answer);
@@ -47,7 +66,6 @@ function askGender() {
             askGender();
         }
         if (isGenderCorrect) {
-            console.log(Player);
             readlineThing.close();
         }
     }) 
@@ -107,6 +125,7 @@ var Player = {
     gender: "Male",
     health: 20,
     currentLocation: location.town,
+    currentEnem: null,
     skill: {
         1: null,
         2: null,
@@ -188,6 +207,14 @@ function chooseClass(answer) {
     }else {
        console.log("Please enter a valid class.");
             askClass();
+    }
+}
+
+function wait(ms) {
+    var start = new Date().getTime();
+    for (var end = start; end < start + ms;) {
+        end = new Date().getTime();
+
     }
 }
 
