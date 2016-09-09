@@ -7,7 +7,10 @@ var readlineThing = readline.createInterface({
 
 var game = {
     start: function() { 
-        initialize();
+        beginText()
+        setTimeout(function() {
+            initialize()
+        }, 6000)
     },
     restart: function() {
         game.start();
@@ -34,9 +37,10 @@ function beginText() {
 }
 
 function initialize() {
+            console.log("Welcome to Helio Project I")
     readlineThing.question("What is your name? ", function(answer) {
             Name(answer);
-            console.log('Hi there ' + answer + ", welcome to the game!")
+            console.log('Hi there ' + answer + " welcome to the game!")
             askClass();
     })
 }
@@ -66,6 +70,7 @@ function askGender() {
             askGender();
         }
         if (isGenderCorrect) {
+            scroll();
             readlineThing.close();
         }
     }) 
@@ -216,6 +221,32 @@ function wait(ms) {
         end = new Date().getTime();
 
     }
+}
+
+function scroll() {
+    console.log("The game begins!")
+    wait (1000);
+    console.log("[Intro:]");
+    wait (2000);
+    console.log("The Inferno Realm, a plane of existance which coexists with the universe in which humans live in, Earth.");
+    wait (2000);
+    console.log("Citizens of this Realm cultivates an unimaginable power, with a punch that rivals with the power of atomic bombs on planet Earth.")
+    wait (2000);
+    console.log("Although dificult, powers to rip open walls of reality and break through the absolute limits of power exist");
+    wait (2000);
+    console.log("In the history of the Infernal realm, a foreign traveller had entered this world, yes another player like you...");
+    wait (2000);
+    console.log("Carving the way to victory, defeating the overlord of terror, a legend has been created");
+    wait (2000);
+    console.log("However, silently an unknown being had entered the Infernal realm along with the foreign traveller and had accumulated enough power to overwhelm the entire Infernal Realm");
+    wait (2000);
+    console.log("The foreign traveller was slain...")
+    wait (2000); 
+    console.log(Player.name + ", the almighty power of the foreign traveller, no the strongest being has fused with you and have created another power, stronger than before!");
+    wait (2000);
+    console.log("With your power of being a " + Player.class + " and your wisdom, you will create another legend");
+    wait (2000);
+    console.log("Hone your powers well...")
 }
 
 game.start();
