@@ -32,34 +32,27 @@ function askClass() {
 
 function askGender() {
     readlineThing.question("Choose your gender: (Male, Female, Genderless)", function(answer) {
-        gender(answer);
-        console.log(Player)
-        readlineThing.close();
-    })
-}
-
-
-var Player = {
-    name: "Eric",
-    race: "Human",
-    class: "Mage",
-    gender: "Male",
-    health: 20,
-    skill: {
-        1: null,
-        2: null,
-        3: null
-    },
-    eat: function() {
-        if (Player.health == 19) {
-            health = 20;
-        } else if (Player.health == 20) {
-            console.log("You are on full health. Stop eating.");
+        var isGenderCorrect = false;
+        if (answer.toLowerCase() == "male") {
+            gender(answer);
+            isGenderCorrect = true;
+        } else if (answer.toLowerCase() == "female") {
+            gender(answer);
+            isGenderCorrect = true;
+        } else if (answer.toLowerCase() == "genderless") {
+            gender(answer);
+            isGenderCorrect = true;
         } else {
-            health = health + 2;
+            console.log("Please enter a valid Gender.");
+            askGender();
         }
-    }
+        if (isGenderCorrect) {
+            console.log(Player);
+            readlineThing.close();
+        }
+    }) 
 }
+
 var enemies = {
     finalBoss: {
         name: "Boss",
@@ -95,14 +88,41 @@ var enemies = {
 
 var location = {
     town: {
+        name: "BloodRidge",
         NPC: [],
         Monsters: null
     },
     woods: {
+        name: "The Woods",
         NPC: [],
         Monsters: enemies.finalBoss
     }
 }
+
+
+var Player = {
+    name: "Eric",
+    race: "Human",
+    class: "Mage",
+    gender: "Male",
+    health: 20,
+    currentLocation: location.town,
+    skill: {
+        1: null,
+        2: null,
+        3: null
+    },
+    eat: function() {
+        if (Player.health == 19) {
+            health = 20;
+        } else if (Player.health == 20) {
+            console.log("You are on full health. Stop eating.");
+        } else {
+            health = health + 2;
+        }
+    }
+}
+
 
 function Name(answer) {
     Player.name = answer;
@@ -153,7 +173,7 @@ function chooseClass(answer) {
         Player.skill["3"] = function() {
             console.log("This skill is a placeholder. It does nothing.");
         }
-    } else if (Player.class.toLowerCase() == "hacker") {
+    } else if (Player.class.toLowerCase() == "immortal") {
         //Player.health = 10;
         Player.skill["2"] = function() {
             console.log("Earthquake");
