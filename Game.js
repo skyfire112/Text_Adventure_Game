@@ -14,17 +14,6 @@ var game = {
     }
 }
 
-var location = {
-    town: {
-        NPC: [],
-        Monsters: null
-    },
-    woods: {
-        NPC: [],
-        Monsters: finalBoss
-    }
-}
-
 function initialize() {
     readlineThing.question("What is your name? ", function(answer) {
             Name(answer);
@@ -71,21 +60,47 @@ var Player = {
         }
     }
 }
-
-var finalBoss = {
-    name: "Boss",
-    health: 100,
-    skill: {
-        attack: function() {
-            console.log("get rekt scrub, mlg 360 no scope");
-            Player.health = Player.health - 10;
-        },
-        taunt: function() {
-            console.log("go home noob");
-        }, 
-        stare: function() {
-            console.log("Look at my eyes...")
+var enemies = {
+    finalBoss: {
+        name: "Boss",
+        health: 100,
+        skill: {
+            attack: function() {
+                console.log("get rekt scrub, mlg 360 no scope");
+                Player.health = Player.health - 10;
+            },
+            taunt: function() {
+                console.log("go home noob");
+            }, 
+            stare: function() {
+                console.log("Look at my eyes...")
+            }
         }
+    }, 
+    ogre: {
+        name: "Shrek",
+        health: 10,
+        skill: {
+            attack: function() {
+                console.log("Get Shreked");
+                Player.health = Player.health - 5;
+            },
+            ogreFood: function() {
+                console.log("Gotta eat breakfast!")
+                enemies.ogre.health = enemies.ogre.health + 2;
+            }
+        }
+    }
+}
+
+var location = {
+    town: {
+        NPC: [],
+        Monsters: null
+    },
+    woods: {
+        NPC: [],
+        Monsters: enemies.finalBoss
     }
 }
 
