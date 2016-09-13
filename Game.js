@@ -246,7 +246,9 @@ function scroll() {
     wait (2000);
     console.log("With your power of being a " + Player.class + " and your wisdom, you will create another legend");
     wait (2000);
-    console.log("Hone your powers well...")
+    console.log("Hone your powers well young hero...")
+    wait (2000);
+    console.log("[You are being teleported...]")
 }
 
 game.start();
