@@ -193,6 +193,8 @@ function chooseClass(answer) {
             finalBoss.health = finalBoss.health - 10;
             console.log("Shanking intensifies");
             finalBoss.health = finalBoss.health - 10;
+            console.log("Shanking intensifies");
+            finalBoss.health = finalBoss.health - 10;
         }
         Player.skill["3"] = function() {
             console.log("This skill is a placeholder. It does nothing.");
